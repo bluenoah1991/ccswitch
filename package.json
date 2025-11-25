@@ -1,0 +1,46 @@
+{
+  "name": "ccswitch",
+  "displayName": "Claude Code Switch",
+  "version": "1.0.0",
+  "description": "Switch between Claude Code API providers",
+  "main": "src/extension.js",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "activationEvents": [],
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ccswitch-sidebar",
+          "title": "Claude Code Switch",
+          "icon": "$(arrow-swap)"
+        }
+      ]
+    },
+    "views": {
+      "ccswitch-sidebar": [
+        {
+          "id": "ccswitchPanel",
+          "name": "Providers",
+          "type": "webview",
+          "icon": "$(arrow-swap)",
+          "contextualTitle": "Claude Code Providers"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "package": "vsce package",
+    "install-extension": "vsce package && code --install-extension ccswitch-1.0.0.vsix"
+  },
+  "publisher": "local",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.6.2"
+  }
+}

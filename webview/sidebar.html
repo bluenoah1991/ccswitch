@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{styleUri}}">
+</head>
+
+<body>
+    <div class="sidebar-container">
+        <div class="section">
+            <div class="section-header">
+                <span class="section-title">Settings</span>
+            </div>
+            <div class="toggle-row">
+                <label class="toggle-label" for="skip-permissions">Allow Dangerously Skip Permissions</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="skip-permissions">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">
+                <span class="section-title">Providers</span>
+                <div class="section-actions">
+                    <button class="icon-btn" id="add-provider-btn" title="Add Provider">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="provider-list" class="provider-list"></div>
+        </div>
+    </div>
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title" id="modal-title">Add Provider</span>
+                <button class="icon-btn" id="modal-close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="modal-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{scriptUri}}"></script>
+</body>
+
+</html>

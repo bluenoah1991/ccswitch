@@ -1,0 +1,222 @@
+{
+  "commonVariables": [
+    {
+      "name": "ANTHROPIC_API_KEY",
+      "value": ""
+    },
+    {
+      "name": "ANTHROPIC_SMALL_FAST_MODEL",
+      "value": ""
+    },
+    {
+      "name": "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC",
+      "value": "1"
+    }
+  ],
+  "templates": [
+    {
+      "id": "zhipu-coding-plan",
+      "name": "Zhipu Coding Plan",
+      "variables": [
+        {
+          "name": "ANTHROPIC_AUTH_TOKEN",
+          "value": ""
+        },
+        {
+          "name": "ANTHROPIC_BASE_URL",
+          "value": "https://open.bigmodel.cn/api/anthropic"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+          "value": "GLM-4.5-Air"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
+          "value": "GLM-4.6"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
+          "value": "GLM-4.6"
+        },
+        {
+          "name": "ANTHROPIC_MODEL",
+          "value": "GLM-4.6"
+        },
+        {
+          "name": "CLAUDE_CODE_SUBAGENT_MODEL",
+          "value": "GLM-4.6"
+        }
+      ]
+    },
+    {
+      "id": "minimax-coding-plan",
+      "name": "Minimax Coding Plan",
+      "variables": [
+        {
+          "name": "ANTHROPIC_AUTH_TOKEN",
+          "value": ""
+        },
+        {
+          "name": "ANTHROPIC_BASE_URL",
+          "value": "https://api.minimaxi.com/anthropic"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+          "value": "MiniMax-M2"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
+          "value": "MiniMax-M2"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
+          "value": "MiniMax-M2"
+        },
+        {
+          "name": "ANTHROPIC_MODEL",
+          "value": "MiniMax-M2"
+        },
+        {
+          "name": "CLAUDE_CODE_SUBAGENT_MODEL",
+          "value": "MiniMax-M2"
+        }
+      ]
+    },
+    {
+      "id": "kimi-for-coding",
+      "name": "Kimi For Coding",
+      "variables": [
+        {
+          "name": "ANTHROPIC_AUTH_TOKEN",
+          "value": ""
+        },
+        {
+          "name": "ANTHROPIC_BASE_URL",
+          "value": "https://api.kimi.com/coding/"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+          "value": "kimi-for-coding"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
+          "value": "kimi-for-coding"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
+          "value": "kimi-for-coding"
+        },
+        {
+          "name": "ANTHROPIC_MODEL",
+          "value": "kimi-for-coding"
+        },
+        {
+          "name": "CLAUDE_CODE_SUBAGENT_MODEL",
+          "value": "kimi-for-coding"
+        }
+      ]
+    },
+    {
+      "id": "synthetic",
+      "name": "Synthetic (GLM-4.6)",
+      "variables": [
+        {
+          "name": "ANTHROPIC_AUTH_TOKEN",
+          "value": ""
+        },
+        {
+          "name": "ANTHROPIC_BASE_URL",
+          "value": "https://api.synthetic.new/anthropic"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+          "value": "hf:zai-org/GLM-4.6"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
+          "value": "hf:zai-org/GLM-4.6"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
+          "value": "hf:zai-org/GLM-4.6"
+        },
+        {
+          "name": "ANTHROPIC_MODEL",
+          "value": "hf:zai-org/GLM-4.6"
+        },
+        {
+          "name": "CLAUDE_CODE_SUBAGENT_MODEL",
+          "value": "hf:zai-org/GLM-4.6"
+        }
+      ]
+    },
+    {
+      "id": "synthetic-minimax",
+      "name": "Synthetic (MiniMax-M2)",
+      "variables": [
+        {
+          "name": "ANTHROPIC_AUTH_TOKEN",
+          "value": ""
+        },
+        {
+          "name": "ANTHROPIC_BASE_URL",
+          "value": "https://api.synthetic.new/anthropic"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+          "value": "hf:MiniMaxAI/MiniMax-M2"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
+          "value": "hf:MiniMaxAI/MiniMax-M2"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
+          "value": "hf:MiniMaxAI/MiniMax-M2"
+        },
+        {
+          "name": "ANTHROPIC_MODEL",
+          "value": "hf:MiniMaxAI/MiniMax-M2"
+        },
+        {
+          "name": "CLAUDE_CODE_SUBAGENT_MODEL",
+          "value": "hf:MiniMaxAI/MiniMax-M2"
+        }
+      ]
+    },
+    {
+      "id": "synthetic-kimi",
+      "name": "Synthetic (Kimi-K2)",
+      "variables": [
+        {
+          "name": "ANTHROPIC_AUTH_TOKEN",
+          "value": ""
+        },
+        {
+          "name": "ANTHROPIC_BASE_URL",
+          "value": "https://api.synthetic.new/anthropic"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+          "value": "hf:moonshotai/Kimi-K2-Thinking"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
+          "value": "hf:moonshotai/Kimi-K2-Thinking"
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
+          "value": "hf:moonshotai/Kimi-K2-Thinking"
+        },
+        {
+          "name": "ANTHROPIC_MODEL",
+          "value": "hf:moonshotai/Kimi-K2-Thinking"
+        },
+        {
+          "name": "CLAUDE_CODE_SUBAGENT_MODEL",
+          "value": "hf:moonshotai/Kimi-K2-Thinking"
+        }
+      ]
+    }
+  ]
+}
