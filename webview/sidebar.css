@@ -314,8 +314,8 @@ body {
 .modal {
     display: flex;
     flex-direction: column;
-    width: 90%;
-    max-width: 400px;
+    width: calc(100% - 40px);
+    max-width: none;
     max-height: 80vh;
     background-color: var(--vscode-editor-background);
     border: 1px solid var(--vscode-widget-border);
