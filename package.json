@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "description": "Switch between Claude Code API providers",
   "main": "src/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bluenoah1991/ccswitch"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
