@@ -27,7 +27,23 @@
           "value": ""
         },
         {
+          "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+          "value": ""
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
+          "value": ""
+        },
+        {
+          "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
+          "value": ""
+        },
+        {
           "name": "ANTHROPIC_MODEL",
+          "value": ""
+        },
+        {
+          "name": "CLAUDE_CODE_SUBAGENT_MODEL",
           "value": ""
         }
       ]
