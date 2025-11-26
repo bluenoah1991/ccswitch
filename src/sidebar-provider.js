@@ -26,7 +26,7 @@ class SidebarProvider {
             const data = await fs.readFile(this.providersFilePath, 'utf8');
             return JSON.parse(data);
         } catch {
-            return { providers: [], activeProviderId: null };
+            return { providers: [] };
         }
     }
 
@@ -76,8 +76,10 @@ class SidebarProvider {
                 ...(provider.variables || [])
             ];
             settings['claudeCode.environmentVariables'] = envVars;
+            settings['claudeCode.activeProviderId'] = provider.id;
         } else {
             delete settings['claudeCode.environmentVariables'];
+            delete settings['claudeCode.activeProviderId'];
         }
 
         try {
@@ -118,10 +120,11 @@ class SidebarProvider {
                     const defaults = await this.getDefaults();
                     const settings = await this.getWorkspaceSettings();
                     const skipPermissions = settings['claudeCode.allowDangerouslySkipPermissions'] === true;
+                    const activeProviderId = settings['claudeCode.activeProviderId'] || null;
                     webviewView.webview.postMessage({
                         command: 'stateData',
                         providers: providers.providers,
-                        activeProviderId: providers.activeProviderId,
+                        activeProviderId: activeProviderId,
                         templates: defaults.templates,
                         commonVariables: defaults.commonVariables,
                         skipPermissions: skipPermissions
@@ -161,11 +164,10 @@ class SidebarProvider {
 
                 case 'deleteProvider': {
                     const data = await this.getProviders();
-                    const wasActive = data.activeProviderId === message.providerId;
+                    const settings = await this.getWorkspaceSettings();
+                    const wasActive = settings['claudeCode.activeProviderId'] === message.providerId;
                     data.providers = data.providers.filter(p => p.id !== message.providerId);
                     if (wasActive) {
-                        data.activeProviderId = null;
-                        const settings = await this.getWorkspaceSettings();
                         const skipPermissions = settings['claudeCode.allowDangerouslySkipPermissions'] === true;
                         await this.applyProvider(null, skipPermissions, null);
                     }
@@ -181,7 +183,6 @@ class SidebarProvider {
                     const defaults = await this.getDefaults();
                     const data = await this.getProviders();
                     const provider = data.providers.find(p => p.id === message.providerId);
-                    data.activeProviderId = message.providerId;
                     await this.setProviders(data);
                     await this.applyProvider(provider, message.skipPermissions, defaults.commonVariables);
                     webviewView.webview.postMessage({
@@ -192,9 +193,6 @@ class SidebarProvider {
                 }
 
                 case 'clearProvider': {
-                    const data = await this.getProviders();
-                    data.activeProviderId = null;
-                    await this.setProviders(data);
                     await this.applyProvider(null, message.skipPermissions, null);
                     webviewView.webview.postMessage({
                         command: 'providerCleared'
@@ -204,7 +202,8 @@ class SidebarProvider {
 
                 case 'toggleSkipPermissions': {
                     const data = await this.getProviders();
-                    const activeProvider = data.providers.find(p => p.id === data.activeProviderId);
+                    const settings = await this.getWorkspaceSettings();
+                    const activeProvider = data.providers.find(p => p.id === settings['claudeCode.activeProviderId']);
                     const defaults = activeProvider ? await this.getDefaults() : null;
                     await this.applyProvider(activeProvider, message.skipPermissions, defaults?.commonVariables);
                     webviewView.webview.postMessage({
