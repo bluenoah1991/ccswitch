@@ -162,11 +162,6 @@
         templateSelect.className = 'form-select';
         templateSelect.id = 'template-select';
 
-        const emptyOption = document.createElement('option');
-        emptyOption.value = '';
-        emptyOption.textContent = '-- Custom --';
-        templateSelect.appendChild(emptyOption);
-
         templates.forEach(template => {
             const option = document.createElement('option');
             option.value = template.id;
@@ -176,10 +171,10 @@
 
         templateSelect.addEventListener('change', () => {
             const selectedId = templateSelect.value;
-            const template = selectedId ? templates.find(t => t.id === selectedId) : null;
-            document.getElementById('provider-name').value = template ? template.name : '';
+            const template = templates.find(t => t.id === selectedId);
+            document.getElementById('provider-name').value = template.name;
             document.getElementById('variables-list').innerHTML = '';
-            (template ? template.variables : []).forEach(v => addVariableRow(v));
+            (template.variables || []).forEach(v => addVariableRow(v));
         });
 
         templateGroup.appendChild(templateLabel);
@@ -219,6 +214,7 @@
         addVarBtn.addEventListener('click', () => addVariableRow());
         body.appendChild(addVarBtn);
 
+        templateSelect.dispatchEvent(new Event('change'));
         showModal();
     }
 

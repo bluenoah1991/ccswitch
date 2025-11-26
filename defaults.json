@@ -15,6 +15,24 @@
   ],
   "templates": [
     {
+      "id": "custom",
+      "name": "-- Custom --",
+      "variables": [
+        {
+          "name": "ANTHROPIC_AUTH_TOKEN",
+          "value": ""
+        },
+        {
+          "name": "ANTHROPIC_BASE_URL",
+          "value": ""
+        },
+        {
+          "name": "ANTHROPIC_MODEL",
+          "value": ""
+        }
+      ]
+    },
+    {
       "id": "zhipu-coding-plan",
       "name": "Zhipu Coding Plan",
       "variables": [
