@@ -197,15 +197,23 @@ body {
     border: 1px solid transparent;
     border-radius: 4px;
     cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 .provider-item:hover {
     background-color: var(--vscode-list-hoverBackground);
+    transform: translateY(-1px);
 }
 
 .provider-item.active {
     background-color: var(--vscode-list-activeSelectionBackground);
     border-color: var(--vscode-button-background);
+}
+
+.provider-item.dragging {
+    opacity: 0.5;
+    transform: scale(0.95);
+    transition: all 0.2s ease;
 }
 
 .provider-icon {
@@ -214,6 +222,14 @@ body {
     background-color: var(--vscode-input-border);
     border-radius: 50%;
     flex-shrink: 0;
+}
+
+.provider-icon.drag-handle {
+    cursor: grab;
+}
+
+.provider-icon.drag-handle:active {
+    cursor: grabbing;
 }
 
 .provider-item.active .provider-icon {

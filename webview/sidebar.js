@@ -6,6 +6,7 @@
     let activeProviderId = null;
     let skipPermissions = false;
     let editingProvider = null;
+    let draggedItem = null;
 
     window.addEventListener('load', () => {
         setupEventListeners();
@@ -47,6 +48,9 @@
                 activeProviderId = null;
                 renderProviders();
                 break;
+            case 'providersReordered':
+                providers = message.providers;
+                break;
         }
     });
 
@@ -85,13 +89,15 @@
             return;
         }
 
-        providers.forEach(provider => {
+        providers.forEach((provider, index) => {
             const item = document.createElement('div');
             item.className = 'provider-item' + (provider.id === activeProviderId ? ' active' : '');
             item.dataset.id = provider.id;
+            item.dataset.index = index;
+            item.draggable = true;
 
             const icon = document.createElement('div');
-            icon.className = 'provider-icon';
+            icon.className = 'provider-icon drag-handle';
 
             const name = document.createElement('span');
             name.className = 'provider-name';
@@ -141,7 +147,50 @@
                 }
             });
 
+            item.addEventListener('dragstart', (e) => {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/html', item.innerHTML);
+                item.classList.add('dragging');
+                draggedItem = item;
+            });
+
+            item.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                if (item !== draggedItem) {
+                    const rect = item.getBoundingClientRect();
+                    const midpoint = rect.top + rect.height / 2;
+                    if (e.clientY < midpoint) {
+                        item.parentNode.insertBefore(draggedItem, item);
+                    } else {
+                        item.parentNode.insertBefore(draggedItem, item.nextSibling);
+                    }
+                }
+            });
+
+            item.addEventListener('dragend', () => {
+                item.classList.remove('dragging');
+                saveNewOrder();
+            });
+
             container.appendChild(item);
+        });
+    }
+
+    function saveNewOrder() {
+        const items = document.querySelectorAll('#provider-list .provider-item');
+        const newOrder = [];
+        items.forEach(item => {
+            const id = item.dataset.id;
+            const provider = providers.find(p => p.id === id);
+            if (provider) {
+                newOrder.push(provider);
+            }
+        });
+        providers = newOrder;
+        vscode.postMessage({
+            command: 'reorderProviders',
+            providers: providers.map(p => ({ id: p.id, name: p.name, variables: p.variables }))
         });
     }
 

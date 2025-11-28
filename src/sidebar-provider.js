@@ -212,6 +212,17 @@ class SidebarProvider {
                     });
                     break;
                 }
+
+                case 'reorderProviders': {
+                    const data = await this.getProviders();
+                    data.providers = message.providers;
+                    await this.setProviders(data);
+                    webviewView.webview.postMessage({
+                        command: 'providersReordered',
+                        providers: message.providers
+                    });
+                    break;
+                }
             }
         });
     }
